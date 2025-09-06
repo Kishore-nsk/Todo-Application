@@ -13,6 +13,7 @@ function App() {
   const [task, setTask] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
+
   const addTodo = () :void => {
     setTodo(todos => [...todos, {id:2,task,description}]);
   }
@@ -27,9 +28,9 @@ function App() {
       <button className="border 2px" onClick={addTodo}>Add Todo</button>
     </div>
     <div className="flex justify-around">
-      <Todo todo={{id:1, task: "Exercise", description: "Go to the gym and workout."}} />
+      {/* <Todo todo={{id:1, task: "Exercise", description: "Go to the gym and workout."}} /> */}
       {todo.map(t => (
-        <Todo todo={{id:2, task: t.task, description: t.description}}/>
+        <Todo todo={{id:todo.length, task: t.task, description: t.description}}/>
       ))}
     </div>
       
