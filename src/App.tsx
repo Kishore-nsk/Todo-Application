@@ -8,12 +8,13 @@ function App() {
     description: string,
 };
 
-  const [todo, setTodos] = useState<Atodo>([]);
+
+  const [todo, setTodo] = useState<Atodo[]>([]);
   const [task, setTask] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
   const addTodo = () :void => {
-
+    setTodo(todos => [...todos, {id:2,task,description}]);
   }
 
   return (
@@ -23,10 +24,13 @@ function App() {
       <input type="text" value={task} onChange={e => setTask(e.target.value)}/>
       <h2>Enter Description</h2>
       <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
-      <button>Add Todo</button>
+      <button className="border 2px" onClick={addTodo}>Add Todo</button>
     </div>
     <div className="flex justify-around">
       <Todo todo={{id:1, task: "Exercise", description: "Go to the gym and workout."}} />
+      {todo.map(t => (
+        <Todo todo={{id:2, task: t.task, description: t.description}}/>
+      ))}
     </div>
       
     </>
